@@ -1,6 +1,5 @@
 package com.ben;
 
-import org.json.JSONObject;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -44,14 +43,13 @@ public enum Student {
         return mark;
     }
 
-    public Map getStudentInfo (String studentId) {
+    public Map<String, Object> getStudentInfo (String studentId) {
         Student student = Arrays.stream(Student.values()).filter(stud -> stud.getStudentId().equals(studentId)).findFirst().orElse(null);
-        Map studentDataMap = new HashMap<>();
+        Map<String, Object> studentDataMap = new HashMap<>();
         studentDataMap.put("studentId", student.studentId);
         studentDataMap.put("studentName", student.studentName);
         studentDataMap.put("department", student.department);
         studentDataMap.put("marks", student.mark);
-
         return studentDataMap;
     }
 }
